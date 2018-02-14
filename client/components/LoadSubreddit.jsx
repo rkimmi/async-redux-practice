@@ -1,7 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchPosts} from '../actions'
+import {fetchPosts, showNewSubreddit} from '../actions'
 
+//get dispatch from class. handle change will triugger dispatch with new action
+
+// class LoadSubreddit extends React.Component {
+
+// }
 
 let LoadSubreddit = ({dispatch}) => (
   <div>

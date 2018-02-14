@@ -1,9 +1,9 @@
 import {SHOW_NEW_SUBREDDIT} from '../actions'
 
-function newsubreddit (state = [], action) {
+function newsubreddit (state = '' , action) {
     switch (action.type) {
       case SHOW_NEW_SUBREDDIT:
-        return action.posts
+        return action.subreddit
   
       default:
         return state
