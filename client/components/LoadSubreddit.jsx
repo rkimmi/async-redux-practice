@@ -4,17 +4,40 @@ import {fetchPosts, showNewSubreddit} from '../actions'
 
 //get dispatch from class. handle change will triugger dispatch with new action
 
-// class LoadSubreddit extends React.Component {
+class LoadSubreddit extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-// }
+  handleChange (e) {
+  this.props.dispatch(showNewSubreddit(e.target.value))
+  }
 
-let LoadSubreddit = ({dispatch}) => (
-  <div>
-    <input type='text' name='subreddit' />
-  <button
-    onClick={() => dispatch(fetchPosts(name))}
-    >Fetch Posts</button>
-    </div>
-)
+  render() {
+    return (
+      <div>
+        <input type='text' name='subreddit' value={this.props.newSubreddit} onChange={this.handleChange}/>
+        <button
+          onClick={() => this.props.dispatch(fetchPosts(this.props.newSubreddit))}
+        >Fetch Posts</button>
+      </div>
+    )
+  }
+}
 
-export default connect()(LoadSubreddit)
+function mapStateToProps (state) {
+  return {
+    newSubreddit: state.newsubreddit
+  }
+}
+// let LoadSubreddit = ({dispatch}) => (
+//   <div>
+//     <input type='text' name='subreddit' />
+//   <button
+//     onClick={() => dispatch(fetchPosts(name))}
+//     >Fetch Posts</button>
+//     </div>
+// )
+
+export default connect(mapStateToProps)(LoadSubreddit)
